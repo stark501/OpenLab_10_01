@@ -8,11 +8,14 @@ namespace OpenLab_10_01
         static void Main(string[] args)
         {
             Book Lotr = new Book();
-            Lotr.SetTitle ("Janko Kral");
-            Lotr.SetPages (352);
-            Lotr.SetCategory ("Romantic");
-            Lotr.SetAutor ("Marina");
-            Lotr.SetReleaseDate (2004);
+            Book Lotr2 = new Book();
+            Book Lotr3 = new Book("Janko Kral", 352);
+            Book HOBIT = new Book("Janko Kral", 352, "Mária Ďuríčková", 2004);
+            Lotr.Title = "Janko Kral";
+            Lotr.Pages = 352;
+            Lotr.Category = "Romantic";
+            Lotr.Autor = "Marina";
+            Lotr.ReleaseDate = 2004;
             Lotr.WriteParameters();
         }
         class Book
@@ -38,9 +41,9 @@ namespace OpenLab_10_01
                     }
                 }
             }
-            private string category
+            private string Category
             { get; set; }
-            private string autor
+        private string Autor
             { get; set; }
             private int releaseDate;
             public int ReleaseDate
@@ -61,18 +64,38 @@ namespace OpenLab_10_01
                     }
                 }
             }
+            public Book()
+            {
+                Title = "-1";
+                Pages = -1;
+                Category = "-1";
+                Autor = "-1";
+                ReleaseDate = -1;
+            }
 
-            public void SetTitle(string newTitle) { title = newTitle; }
-        public void SetPages(int newPages) { pages = newPages; }
-            public void SetCategory(string newCategory) { category = newCategory; }
-            public void SetAutor(string newAutor) { autor = newAutor; }
-            public void SetReleaseDate(int newReleaseDate) { releaseDate = newReleaseDate; }
+            Book(string title, int pages)
+            {
+                this.Title = title;
+                this.Pages = pages;
+                Autor = "-1";
+                Category = "-1";
+                ReleaseDate = -1;
+            }
+
+            public Book(string title, int pages, string category, string author, int releaseDate)
+            {
+                this.Title = title;
+                this.Pages = pages;
+                this.Category = category;
+                this.Autor = Autor;
+                this.ReleaseDate = releaseDate;
+            }
             public void WriteParameters()
             {
                 Console.WriteLine(title);
                 Console.WriteLine(pages);
-                Console.WriteLine(category);
-                Console.WriteLine(autor);
+                Console.WriteLine(Category);
+                Console.WriteLine(Autor);
                 Console.WriteLine(releaseDate);
             }
 
